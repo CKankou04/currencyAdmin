@@ -1,66 +1,44 @@
 <template>
-   <div class="container-fluid px-1 py-5 mx-auto">
+<div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
-      <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-        
-        <div class="card">
-          <h5 class="text-center mb-4">Création d'une nouvelle paire</h5>
-          <form class="form-card" onsubmit="event.preventDefault()">
-            <div class="row justify-content-between text-left">
-              <div class="form-group col-sm-6 flex-column d-flex">
-                <label class="form-control-label px-3"
-                  >Nom de la dévise<span class="text-danger"> *</span></label
-                >
-                <input
-                  type="text"
-                  id="currencyName"
-                  name="currencyName"
-                  placeholder="Enter le nom"
-                  onblur="validate(1)"
-                />
-              </div>
-              <div class="form-group col-sm-6 flex-column d-flex">
-                <label class="form-control-label px-3"
-                  >Code de la dévise<span class="text-danger"> *</span></label
-                >
-                <input
-                  type="text"
-                  id="currencyCode"
-                  name="currencyCode"
-                  placeholder="Entrer le code"
-                  onblur="validate(2)"
-                />
-              </div>
-            </div>
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             
-            <div class="row justify-content-between text-left">
-              <div class="form-group col-12 flex-column d-flex">
-                <label class="form-control-label px-3"
-                  >Symbole de dévise<span class="text-danger">
-                    *</span
-                  ></label
-                >
-                <input
-                  type="text"
-                  id="symbol"
-                  name="symbol"
-                  placeholder=""
-                  onblur="validate(6)"
-                />
-              </div>
+            <div class="card">
+                <h5 class="text-center mb-4">Ajout d'une nouvelle paire</h5>
+                <form class="form-card" onsubmit="event.preventDefault()">
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nom de la paire<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Entrer le nom" onblur="validate(1)"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Taux de conversion<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Entrer le taux" onblur="validate(2)"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left mt-4">
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                          <label class="form-control-label px-3">Dévise from<span class="text-danger"> *</span></label> 
+                          <select id="form_need" name="need" onblur="validate(3)" class="pt-3 rounded-1">
+                                  <option>--Select Your Issue--</option>
+                                  <option >Request Invoice for order</option>
+                                  <option >Request order status</option>
+                                  <option >Haven't received cashback yet</option>
+                                  <option >Other</option>
+                              </select> 
+                          </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                          <label class="form-control-label px-3">Dévise to<span class="text-danger"> *</span></label> 
+                          <select id="form_need" name="need" class="pt-3 rounded-1">
+                                  <option>--Select Your Issue--</option>
+                                  <option >Request Invoice for order</option>
+                                 
+                              </select> 
+                          </div>
+                    </div>
+                   
+                    <div class="row justify-content-center mt-4">
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Enregistrer</button> </div>
+                    </div>
+                </form>
             </div>
-            <div class="row justify-content-center">
-              <div class="form-group col-sm-6">
-                <button type="submit" class="btn-block btn-primary">
-                  Enregistrer
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
+</div>
   <AddPair />
 </template>
 
