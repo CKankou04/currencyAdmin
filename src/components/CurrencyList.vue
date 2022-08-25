@@ -13,10 +13,9 @@
                 <thead>
                   <tr>
                     <th>Nb conversion</th>
-                    <th>Id Paire</th>
+                    
                     <th>Nom de la Paire</th>
-                    <th>Id_from</th>
-                    <th>Id_to</th>
+                   
                     <th>Taux de change</th>
                     <th>Modifier</th>
                     <th>Supprimer</th>
@@ -25,13 +24,12 @@
                 <tbody>
                   <tr v-for="pair in pairs" :key="pair.id">
                     <th> 23</th>
-                    <td>{{pair.id}}</td>
+                    
                     <td>{{pair.currencyfrom.currency_code}}-{{pair.currencyto.currency_code}}</td>
-                    <td>{{pair.id_currency_from}}</td>
-                    <td>{{pair.id_currency_to}}</td>
+                    
                     <td>{{pair.rate}}</td>
                     <td>modif</td>
-                    <td>supp</td>
+                    <td>supp<i class="bi bi-file-earmark-check"></i></td>
                   </tr>
                 </tbody>
               </table>
@@ -74,7 +72,7 @@ export default {
 body {
   min-height: 100vh;
 
-  background-color: #ffe53b;
-  background-image: linear-gradient(147deg, #ffe53b 0%, #ff2525 100%);
+  background-color: silver;
+  background-image: linear-gradient(147deg,silver 0%, silver 100%);
 }
 </style>

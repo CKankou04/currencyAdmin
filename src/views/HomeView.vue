@@ -1,9 +1,7 @@
 <script setup>
-import TheWelcome from "@/components/TheWelcome.vue";
+import CurrencyList from '../components/CurrencyList.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <CurrencyList />
 </template>

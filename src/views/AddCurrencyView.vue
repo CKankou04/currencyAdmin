@@ -1,10 +1,13 @@
 <template>
-  <div>Formulaire d'ajout d'une dévise</div>
+<AddCurrency></AddCurrency>
+
 </template>
 
 <script>
-export default {
 
+import AddCurrency from '../components/AddCurrency.vue';
+export default {
+    components: { AddCurrency }
 }
 </script>
 

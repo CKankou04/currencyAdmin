@@ -1,10 +1,10 @@
 <template>
-   <div class="container-fluid px-1 py-5 mx-auto">
+<div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
       <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
         
         <div class="card">
-          <h5 class="text-center mb-4">Création d'une nouvelle paire</h5>
+          <h5 class="text-center mb-4">Création d'une nouvelle dévise</h5>
           <form class="form-card" onsubmit="event.preventDefault()">
             <div class="row justify-content-between text-left">
               <div class="form-group col-sm-6 flex-column d-flex">
@@ -61,17 +61,61 @@
       </div>
     </div>
   </div>
-  <AddPair />
 </template>
 
 <script>
-
-import AddPair from '@/components/AddPair.vue'
-export default {
-
-}
+export default {};
 </script>
 
 <style>
 
+.card {
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+}
+.blue-text {
+  color: #00bcd4;
+}
+.form-control-label {
+  margin-bottom: 0;
+}
+input,
+textarea,
+button {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300;
+}
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00bcd4;
+  outline-width: 0;
+  font-weight: 400;
+}
+.btn-block {
+  text-transform: uppercase;
+  font-size: 15px !important;
+  font-weight: 400;
+  height: 43px;
+  cursor: pointer;
+}
+.btn-block:hover {
+  color: #fff !important;
+}
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
+}
 </style>
