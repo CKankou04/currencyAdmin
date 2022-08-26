@@ -16,7 +16,8 @@
                   id="currencyName"
                   name="currencyName"
                   placeholder="Enter le nom"
-                  onblur="validate(1)"
+                  v-model="formData.name"
+                 
                 />
               </div>
               <div class="form-group col-sm-6 flex-column d-flex">
@@ -28,7 +29,8 @@
                   id="currencyCode"
                   name="currencyCode"
                   placeholder="Entrer le code"
-                  onblur="validate(2)"
+                  v-model="formData.currency_code"
+                
                 />
               </div>
             </div>
@@ -45,13 +47,14 @@
                   id="symbol"
                   name="symbol"
                   placeholder=""
-                  onblur="validate(6)"
+                  v-model="formData.symbol"
+                 
                 />
               </div>
             </div>
             <div class="row justify-content-center">
               <div class="form-group col-sm-6">
-                <button type="submit" class="btn-block btn-primary">
+                <button type="submit" class="btn-block btn-primary" @click.prevent="create">
                   Enregistrer
                 </button>
               </div>
@@ -64,7 +67,28 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+export default {
+  data(){
+            return {
+              formData: {
+                name: '',
+                currency_code: '',
+                symbol: '',
+            }
+            }
+        },
+        methods: {
+            create() {
+            axios.post('http://127.0.0.1:8000/api/currenciesAdd', this.formData).then((response) => {
+                console.log('succes')
+                this.$router.push('/')
+            }).catch((error) => {
+                console.log(error)
+            });
+        }
+        }
+};
 </script>
 
 <style>

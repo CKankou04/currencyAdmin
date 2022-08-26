@@ -6,6 +6,10 @@ import "./assets/main.css";
 
 const app = createApp(App);
 
+function loggedIn(){
+    return localStorage.getItem('token')
+}
+
 app.use(router);
 
 app.mount("#app");

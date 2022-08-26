@@ -7,7 +7,6 @@
                 <h5 class="text-center mb-4">Ajout d'une nouvelle paire</h5>
                 <form class="form-card" onsubmit="event.preventDefault()">
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nom de la paire<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Entrer le nom" onblur="validate(1)"> </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Taux de conversion<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Entrer le taux" onblur="validate(2)"> </div>
                     </div>
                     <div class="row justify-content-between text-left mt-4">
