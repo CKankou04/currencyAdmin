@@ -74,7 +74,7 @@ export default {
     });
   },
   methods: {
-    pairDelete(id, index) {
+     pairDelete(id, index) {
       axios
         .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
         .then((response) => {
@@ -86,7 +86,7 @@ export default {
         .catch((error) => {
           console.log(error.response.data);
         });
-    },
+    }, 
   },
   data() {
     return {
