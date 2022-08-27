@@ -17,7 +17,7 @@
                                   <option >Haven't received cashback yet</option>
                                   <option >Other</option>
                               </select>  -->
-                              <input type="text" id="lname" name="from">
+                              <input type="text" id="lname" name="from"  v-model="pair.id_currency_from">
                           </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> 
                           <label class="form-control-label px-3">Dévise to<span class="text-danger"> *</span></label> 
@@ -26,11 +26,15 @@
                                   <option >Request Invoice for order</option>
                                  
                               </select>  -->
-                               <input type="text" id="lname" name="to">
+                               <input type="text" id="lname" name="to" v-model="pair.id_currency_to">
                           </div>
                     </div>
                      <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Taux de conversion<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <label class="form-control-label px-3">Taux de conversion
+                                <span class="text-danger"> *</span>
+                            </label> 
+                            <input type="text" id="lname" name="lname" v-model="pair.rate"> </div>
                     </div>
                    
                     <div class="row justify-content-center mt-4">
@@ -46,7 +50,41 @@
 </template>
 
 <script>
+import { useRouter, useRoute } from 'vue-router';
+import axios from 'axios';
+
 export default {
+    
+    props:{
+
+    },
+    data(){
+        return{
+             pair: {
+                id_currency_from: '',
+                id_currency_to: '',
+                rate: '',
+            },
+            route:useRoute(),
+        }
+    },
+    methods:{
+
+    },
+    mounted(){
+ // fetch api from laravel backend
+      axios
+        .get(`http://127.0.0.1:8000/api/pairs/${route.params.id}`, this.pair)
+        .then((response) => {
+            console.log(response.data)
+          this.pair.id_currency_from = response.data.data.id_currency_from;
+          this.pair.id_currency_to = response.data.data.id_currency_to;
+          this.pair.rate = response.data.data.rate;
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    }
 
 }
 </script>
