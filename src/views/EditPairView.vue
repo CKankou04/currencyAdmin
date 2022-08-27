@@ -1,15 +1,15 @@
 <template>
 
-<AddPair></AddPair>
+<EditPair></EditPair>
 
 </template>
 
 <script>
 
 //import AddPair from '@/components/AddPair'
-import AddPair from '../components/AddPair.vue';
+import EditPair from '../components/EditPair.vue';
 export default {
-    components: { AddPair }
+    components: { EditPair }
 }
 </script>
 

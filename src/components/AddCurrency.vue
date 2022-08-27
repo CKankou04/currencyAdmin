@@ -80,7 +80,7 @@ export default {
         },
         methods: {
             create() {
-            axios.post('http://127.0.0.1:8000/api/currenciesAdd', this.formData).then((response) => {
+            axios.post('http://127.0.0.1:8000/api/currencies', this.formData).then((response) => {
                 console.log('succes')
                 this.$router.push('/')
             }).catch((error) => {

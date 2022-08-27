@@ -4,6 +4,7 @@ import AddCurrencyView from '../views/AddCurrencyView.vue';
 import LoginView from '@/views/LoginView.vue';
 import Register from '@/views/Register.vue';
 import AddPairView from '@/views/AddPairView.vue';
+import EditPairView from '@/views/EditPairView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: "/addpair",
       name: "addpair",
       component: AddPairView,
+    },
+    {
+      path: '/editpair/:id',
+      name: 'pair.edit',
+      component: EditPairView
     },
     {
       path: "/about",
