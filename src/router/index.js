@@ -36,7 +36,7 @@ const router = createRouter({
     },
     {
       path: '/editpair/:id',
-      name: 'pair.edit',
+      name: 'editpair',
       component: EditPairView
     },
     {

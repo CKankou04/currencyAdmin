@@ -34,7 +34,7 @@
                     <td>{{ pair.rate }}</td>
                     <td>
                       <RouterLink
-                        :to="{ name: 'pair.edit', params:{ id: pair.id } }"
+                        :to="{ name: 'editpair', params:{ id: pair.id } }"
                         class="text-green-500"
                         >Modifier</RouterLink
                       >
