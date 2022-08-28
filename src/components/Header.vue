@@ -17,7 +17,7 @@
                        <!--  <span class="navbar-text">
                           <RouterLink to="/" class="login">Connexion</RouterLink>
                         </span> -->
-                        <button class="btn btn-danger" @click="logout">Logout</button>
+                        <button class="btn btn-danger" @click.prevent="logout">Logout</button>
                         </div>
                 </div>
             </nav>
@@ -44,6 +44,7 @@ export default {
               axios.post('http://127.0.0.1:8000/api/logout').then((response) => {
                     localStorage.removeItem('token')
                     this.$router.push('/')
+                    document.location.reload()
                     
                 }).catch((errors) => {
                     console.log(errors)

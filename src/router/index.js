@@ -14,32 +14,36 @@ const router = createRouter({
       path: "/home",
       name: "home",
       component: HomeView,
+      meta: { authOnly: true }
     },
     {
       path: "/register",
       name: "register",
       component: Register,
+      meta: { authOnly: true }
     },
     {
       path: "/",
       name: "login",
       component: LoginView,
-      meta: {guest: true}
     },
     {
       path: "/addcurrency",
       name: "addcurrency",
       component: AddCurrencyView,
+      meta: { authOnly: true }
     },
     {
       path: "/addpair",
       name: "addpair",
       component: AddPairView,
+      meta: { authOnly: true }
     },
     {
       path: '/editpair/:id',
       name: 'editpair',
-      component: EditPairView
+      component: EditPairView,
+      meta: { authOnly: true }
     },
     {
       path: "/about",
@@ -53,5 +57,36 @@ const router = createRouter({
   
 });
 
+function isLoggedIn() {
+  return localStorage.getItem("token");
+}
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.authOnly)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!isLoggedIn()) {
+      next({
+        path: "/",
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.guestOnly)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (isLoggedIn()) {
+      next({
+        path: "/home",
+        query: { redirect: to.fullPath }
+      });
+    } else {
+      next();
+    }
+  } else {
+    next(); // make sure to always call next()!
+  }
+});
 
 export default router;

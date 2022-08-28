@@ -1,4 +1,5 @@
 <template>
+<Header></Header>
 <h1 class="text-center pt-5 pb-1">Bienvenue sur la page de création d'une nouvelle paire</h1>
 <div class="container-fluid px-1 py-5 mx-auto pt-1">
     <div class="row d-flex justify-content-center">
@@ -49,37 +50,39 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from "axios";
+import Header from "./Header.vue";
 
 export default {
     data() {
         return {
             formData: {
-                id_currency_from: '',
-                id_currency_to: '',
-                rate: '',
+                id_currency_from: "",
+                id_currency_to: "",
+                rate: "",
             },
             currencies: []
-        }
+        };
     },
-     methods: {
+    methods: {
         createPair() {
-            axios.post('http://127.0.0.1:8000/api/pairs', this.formData).then((response) => {
-                console.log('Paire ajoutée avec succès!')
-                this.$router.push('/HOME')
-                this.$toaster.success('Paire ajoutée avec succès!')
-                alert('ajout avec succès')
+            axios.post("http://127.0.0.1:8000/api/pairs", this.formData).then((response) => {
+                console.log("Paire ajoutée avec succès!");
+                this.$router.push("/HOME");
+                this.$toaster.success("Paire ajoutée avec succès!");
+                alert("ajout avec succès");
             }).catch((error) => {
-                console.log(error)
+                console.log(error);
             });
         }
     },
-mounted() {
-    //API Call
-    axios.get("http://127.0.0.1:8000/api/currencies").then((res) => {
-      this.currencies = res.data.data;
-      console.log(this.currencies);
-    });
-  }
+    mounted() {
+        //API Call
+        axios.get("http://127.0.0.1:8000/api/currencies").then((res) => {
+            this.currencies = res.data.data;
+            console.log(this.currencies);
+        });
+    },
+    components: { Header }
 }
 </script>
 

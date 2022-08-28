@@ -2,7 +2,7 @@
   <div class="registration-form">
     <form>
       <div class="form-icon">
-        <span><i class="bi bi-person-fill"></i></span>
+        <span><img src="../assets/profile.png" width="70" style="color:white" alt="profile icone"/></span>
       </div>
       <div class="form-group">
         <input
@@ -36,7 +36,9 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
     export default {
         data(){
             return {

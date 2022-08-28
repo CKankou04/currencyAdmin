@@ -1,12 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 
-import CurrencyList from "./components/CurrencyList.vue";
-import Header from "./components/Header.vue";
 </script>
 
 <template>
-<Header></Header>
 <RouterView />
 </template>
 

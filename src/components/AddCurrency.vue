@@ -1,4 +1,5 @@
 <template>
+<Header></Header>
 <h1 class="text-center pt-5 pb-1">Bienvenue sur la page de création d'une nouvelle devise</h1>
 <div class="container-fluid px-1 py-5 mx-auto pt-1">
     <div class="row d-flex justify-content-center">
@@ -71,28 +72,29 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from 'axios';
+import Header from "./Header.vue";
 export default {
-  data(){
-            return {
-              formData: {
-                name: '',
-                currency_code: '',
-                symbol: '',
+    data() {
+        return {
+            formData: {
+                name: "",
+                currency_code: "",
+                symbol: "",
             }
-            }
-        },
-        methods: {
-            create() {
-            axios.post('http://127.0.0.1:8000/api/currencies', this.formData).then((response) => {
-                console.log('succes')
-                this.$router.push('/home')
-                this.$toaster.success('dévise ajoutée avec succès!')
-                
+        };
+    },
+    methods: {
+        create() {
+            axios.post("http://127.0.0.1:8000/api/currencies", this.formData).then((response) => {
+                console.log("succes");
+                this.$router.push("/home");
+                this.$toaster.success("dévise ajoutée avec succès!");
             }).catch((error) => {
-                console.log(error)
+                console.log(error);
             });
         }
-        }
+    },
+    components: { Header }
 };
 </script>
 

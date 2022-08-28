@@ -1,6 +1,6 @@
 <template>
 
-
+<Header></Header>
   <h1 class="text-center pb-5 pt-5">Bienvenue sur le tableau d'Administration</h1>
   <div class="d-flex justify-content-center gap-4 pb-3">
     <button class="rounded-2 border-1 grey brand"> 
@@ -85,35 +85,35 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { RouterLink } from "vue-router";
+import Header from "./Header.vue";
 export default {
-  mounted() {
-    //API Call
-    axios.get("http://127.0.0.1:8000/api/pairs").then((res) => {
-      this.pairs = res.data.pairs;
-      console.log(this.pairs);
-    });
-  },
-  methods: {
-     pairDelete(id, index) {
-      axios
-        .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
-        .then((response) => {
-          console.log(response)
-          document.location.reload()
-          pairs.value.splice(index, 1);
-          
-          
-        })
-        .catch((error) => {
-          console.log(error.response.data);
+    mounted() {
+        //API Call
+        axios.get("http://127.0.0.1:8000/api/pairs").then((res) => {
+            this.pairs = res.data.pairs;
+            console.log(this.pairs);
         });
-    }, 
-  },
-  data() {
-    return {
-      pairs: [],
-    };
-  },
+    },
+    methods: {
+        pairDelete(id, index) {
+            axios
+                .delete(`http://127.0.0.1:8000/api/pairs/${id}`)
+                .then((response) => {
+                console.log(response);
+                document.location.reload();
+                pairs.value.splice(index, 1);
+            })
+                .catch((error) => {
+                console.log(error.response.data);
+            });
+        },
+    },
+    data() {
+        return {
+            pairs: [],
+        };
+    },
+    components: { Header }
 };
 </script>
 
