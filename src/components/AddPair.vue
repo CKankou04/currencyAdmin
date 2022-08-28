@@ -4,7 +4,7 @@
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             
             <div class="card">
-                <h5 class="text-center mb-4">Ajout d'une nouvelle paire</h5>
+                <h5 class="text-center mb-4">Formulaire d'Ajout d'une nouvelle paire</h5>
                 <form class="form-card" onsubmit="event.preventDefault()">
                    
                     <div class="row justify-content-between text-left mt-4">
@@ -61,6 +61,7 @@ export default {
                 console.log('Paire ajoutée avec succès!')
                 this.$router.push('/')
                 this.$toaster.success('Paire ajoutée avec succès!')
+                alert('ajout avec succès')
             }).catch((error) => {
                 console.log(error)
             });

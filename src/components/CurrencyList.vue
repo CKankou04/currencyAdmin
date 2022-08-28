@@ -1,20 +1,31 @@
 <template>
-  <div class="container py-5">
-    <div class="row py-5">
-      <div class="col-lg-10 mx-auto">
-        <div class="card rounded shadow border-0">
-          <div class="card-body p-5 bg-white rounded">
-            <div class="table-responsive">
+
+
+  <h1 class="text-center pb-5 pt-5">Bienvenue sur le tableau d'Administration</h1>
+  <div class="d-flex justify-content-center gap-4 pb-3">
+    <button class="rounded-2 border-1 grey brand"> 
+      <RouterLink class="navbar-brand fw-bolder" to="addcurrency">Ajouter une devise</RouterLink>
+    </button>
+    <button class="rounded-2 border-1 grey brand">
+      <RouterLink class="navbar-brand fw-bolder" to="addpair">Ajouter une Paire</RouterLink>
+    </button>
+</div>
+  <div class="container-fluid px-1 py-5 mx-auto p-sm-0 m-sm-0" >
+    <div class="row d-flex justify-content-center">
+      <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-1 text-center mx-auto ">
+        <div class="card rounded shadow border-0 p-sm-0 m-sm-0">
+          <div class="card-body  bg-white rounded ">
+            <div class="table-responsive p-sm-0 m-sm-0">
               <table
                 id="example"
                 style="width: 100%"
-                class="table table-striped table-bordered"
+                class="table table-striped table-bordered table-hover "
               >
                 <thead>
                   <tr>
-                    <th>Nb conversion</th>
+                    <th >Nb convert</th>
 
-                    <th>Nom de la Paire</th>
+                    <th>Nom de la Paire </th>
 
                     <th>Taux de change</th>
                     <th>Modifier</th>
@@ -23,7 +34,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="pair in pairs" :key="pair.id">
-                    <th>23</th>
+                    <th>12</th>
 
                     <td>
                       {{ pair.currencyfrom.currency_code }}-{{
@@ -44,7 +55,8 @@
                         @click.prevent="pairDelete(pair.id, index)"
                         class="text-red-600"
                       >
-                        Supprimer
+                        Supp <i class="fas fa-trash"></i>
+                        <font-awesome-icon icon="fa-solid fa-circle-info" beat-fade />
                       </button>
                     </td>
                   </tr>
@@ -59,11 +71,15 @@
 </template>
 
 <script>
-//Bootstrap and jQuery libraries
+
 //import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from "axios";
+
+/* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import { RouterLink } from "vue-router";
 export default {
   mounted() {
@@ -72,6 +88,9 @@ export default {
       this.pairs = res.data.pairs;
       console.log(this.pairs);
     });
+    /*  axios.get("http://127.0.0.1:8000/api/converts") 
+        .then( response => this.pairs = response.data.convert ) 
+        .catch( error => console.log( 'error: ' + error ) );  */
   },
   methods: {
      pairDelete(id, index) {
@@ -81,6 +100,7 @@ export default {
           console.log(response)
           document.location.reload()
           pairs.value.splice(index, 1);
+          
           
         })
         .catch((error) => {
@@ -103,4 +123,13 @@ body {
   background-color: silver;
   background-image: linear-gradient(147deg, silver 0%, silver 100%);
 }
+.brand:hover{
+  background-color:teal;
+  color: whitesmoke;
+  font-weight: bold;
+}
+.header-dark{
+  padding-bottom: 0%;
+}
+
 </style>

@@ -1,15 +1,17 @@
 <template>
     <div>
-        <div class="header-dark">
-            <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
-                <div class="container"><RouterLink class="navbar-brand" to="/">Home</RouterLink><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-                <RouterLink class="navbar-brand" to="addcurrency">Ajout devise</RouterLink><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-               <RouterLink class="navbar-brand" to="addpair">Ajout Paire</RouterLink><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="header-dark d-flex justify-content-end bg-dark pb-0 mb-0">
+            <nav class="navbar navbar-dark navbar-expand-md">
+                <div class="container"><RouterLink class="navbar-brand rounded-1" to="/home">Dashboard</RouterLink>
                     <div class="collapse navbar-collapse">
-                       
                         <form class="form-inline mr-auto" target="_self">
-                            <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input class="form-control search-field" type="search" name="search" id="search-field"></div>
-                        </form><span class="navbar-text"><RouterLink to="login" class="login">Connexion</RouterLink></span><RouterLink class="btn btn-light action-button" role="button" to="register">Déconnexion</RouterLink></div>
+                            <div class="form-group"><input class="form-control search-field" type="search" name="search" id="search-field"></div>
+                        </form>
+                        <span class="navbar-text">
+                          <RouterLink to="/" class="login">Connexion</RouterLink>
+                        </span>
+                        <button class="btn btn-danger" @click="logout">Logout</button>
+                        </div>
                 </div>
             </nav>
             
@@ -20,8 +22,23 @@
 
 <script>
 import { RouterLink } from 'vue-router';
+import axios from 'axios';
 export default {
-
+  data (){
+    return{
+      token: localStorage.getItem('token')
+    }
+  },
+  methods:{
+    logout(){
+              axios.post('http://127.0.0.1:8000/api/logout').then((response) => {
+                    localStorage.removeItem('token')
+                    this.$router.push('/')
+                }).catch((errors) => {
+                    console.log(errors)
+                })
+            }
+}
 }
 </script>
 
