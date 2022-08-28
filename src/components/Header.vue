@@ -47,7 +47,7 @@ export default {
                     document.location.reload()
                     
                 }).catch((errors) => {
-                    console.log(errors)
+                    
                 })
             }
 }

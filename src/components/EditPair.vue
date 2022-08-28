@@ -69,13 +69,12 @@ export default {
             axios
                 .get(`http://localhost:8000/api/pairs/${route.params.id}`)
                 .then((response) => {
-                console.log(response);
                 pair.id_currency_from = response.data.data.id_currency_from;
                 pair.id_currency_to = response.data.data.id_currency_to;
                 pair.rate = response.data.data.rate;
             })
                 .catch((error) => {
-                console.log(error.response.data);
+               
             });
         });
         function submit() {
@@ -89,14 +88,13 @@ export default {
                 rate: rate
             })
                 .then((response) => {
-                console.log(response);
-                console.log("paire mis à jour!");
+                
                 router.push({
                     name: "home",
                 });
             })
                 .catch((error) => {
-                console.log(error);
+                
             });
         }
         return {

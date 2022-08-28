@@ -1,35 +1,55 @@
 # currencyAdmin
 
-This template should help get you started developing with Vue 3 in Vite.
+lien de mon projet git Coté client "currencyAdmin"
+https://github.com/CKankou04/currencyAdmin.git
 
-## Recommended IDE Setup
+lien de mon projet git Coté server "currencyApi"
+https://github.com/CKankou04/currencyApi.git
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Pour installer les dependances du projet
 
 ```sh
 npm install
 ```
-
-### Compile and Hot-Reload for Development
+### Ensuite pour lancer le coté client
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### builder le projet
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Pour installer [ESLint](https://eslint.org/)
 
 ```sh
 npm run lint
 ```
+
+Pour la connexion de l'utilisateur coté client :
+
+```sh
+User: philippe@gmail.com
+mdp: password
+```
+
+A faire coté server :
+
+```sh
+Creer une BD appélé "currency"
+Creer le fichier .env et associer à la BD
+```
+Pour remplir les seeders :
+
+```sh
+$php artisan migrate:fresh --seed
+```
+### Ensuite pour lancer le coté server
+
+```sh
+$php artisan serve
+```
+

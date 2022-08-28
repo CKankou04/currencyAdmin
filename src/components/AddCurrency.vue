@@ -69,10 +69,9 @@
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from 'axios';
 import Header from "./Header.vue";
+
 export default {
     data() {
         return {
@@ -86,11 +85,8 @@ export default {
     methods: {
         create() {
             axios.post("http://127.0.0.1:8000/api/currencies", this.formData).then((response) => {
-                console.log("succes");
                 this.$router.push("/home");
-                this.$toaster.success("dévise ajoutée avec succès!");
             }).catch((error) => {
-                console.log(error);
             });
         }
     },
