@@ -12,7 +12,7 @@
 </div>
   <div class="container-fluid px-1 py-5 mx-auto p-sm-0 m-sm-0" >
     <div class="row d-flex justify-content-center">
-      <div class="col-xl-10 col-lg-10 col-md-8 col-sm-8 col-xs-1 text-center mx-auto ">
+      <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-xs-1 text-center mx-auto ">
         <div class="card rounded shadow border-0 p-sm-0 m-sm-0">
           <div class="card-body  bg-white rounded ">
             <div class="table-responsive p-sm-0 m-sm-0">
@@ -23,7 +23,7 @@
               >
                 <thead>
                   <tr>
-                    <th >Nb convert</th>
+                    <th >décompte</th>
 
                     <th>Nom de la Paire </th>
 
@@ -34,7 +34,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="pair in pairs" :key="pair.id">
-                    <th>12</th>
+                    <th>{{ pair.count}}</th>
 
                     <td>
                       {{ pair.currencyfrom.currency_code }}-{{
@@ -44,19 +44,23 @@
 
                     <td>{{ pair.rate }}</td>
                     <td>
-                      <RouterLink
+                     
+                       <button type="button" class="bg-info" >
+                         <RouterLink
                         :to="{ name: 'editpair', params:{ id: pair.id } }"
-                        class="text-green-500"
+                        class="text-500 text-decoration-none text-black "
                         >Modifier</RouterLink
                       >
+                        
+                      </button>
                     </td>
                     <td>
                       <button
                         @click.prevent="pairDelete(pair.id, index)"
-                        class="text-red-600"
+                        class="text-red-600 bg-danger"
                       >
-                        Supp <i class="fas fa-trash"></i>
-                        <font-awesome-icon icon="fa-solid fa-circle-info" beat-fade />
+                        Supprimer
+                        
                       </button>
                     </td>
                   </tr>
@@ -88,9 +92,6 @@ export default {
       this.pairs = res.data.pairs;
       console.log(this.pairs);
     });
-    /*  axios.get("http://127.0.0.1:8000/api/converts") 
-        .then( response => this.pairs = response.data.convert ) 
-        .catch( error => console.log( 'error: ' + error ) );  */
   },
   methods: {
      pairDelete(id, index) {

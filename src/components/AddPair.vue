@@ -1,10 +1,11 @@
 <template>
-<div class="container-fluid px-1 py-5 mx-auto">
+<h1 class="text-center pt-5 pb-1">Bienvenue sur la page de création d'une nouvelle paire</h1>
+<div class="container-fluid px-1 py-5 mx-auto pt-1">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
             
             <div class="card">
-                <h5 class="text-center mb-4">Formulaire d'Ajout d'une nouvelle paire</h5>
+                <h5 class="text-center mb-4">Formulaire de création</h5>
                 <form class="form-card" onsubmit="event.preventDefault()">
                    
                     <div class="row justify-content-between text-left mt-4">
@@ -24,8 +25,12 @@
                               </select> 
                           </div>
                     </div>
-                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Taux de conversion<span class="text-danger"> *</span></label> <input type="text" id="lname" name="lname" placeholder="Entrer le taux" v-model="formData.rate"> </div>
+                     <div class="row justify-content-between text-left pt-4">
+                        <div class="form-group col-sm-6 flex-column d-flex">
+                             <label class="form-control-label px-3">Taux de conversion
+                                <span class="text-danger"> *</span>
+                            </label> 
+                            <input type="text" id="lname" name="lname" placeholder="Entrer le nouveau taux" v-model="formData.rate"> </div>
                     </div>
                    
                     <div class="row justify-content-center mt-4">
@@ -44,6 +49,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from "axios";
+
 export default {
     data() {
         return {
@@ -59,7 +65,7 @@ export default {
         createPair() {
             axios.post('http://127.0.0.1:8000/api/pairs', this.formData).then((response) => {
                 console.log('Paire ajoutée avec succès!')
-                this.$router.push('/')
+                this.$router.push('/HOME')
                 this.$toaster.success('Paire ajoutée avec succès!')
                 alert('ajout avec succès')
             }).catch((error) => {

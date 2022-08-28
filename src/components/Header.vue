@@ -1,20 +1,26 @@
 <template>
     <div>
-        <div class="header-dark d-flex justify-content-end bg-dark pb-0 mb-0">
+        <div class="header-dark d-flex justify-content-around bg-dark pb-0 mb-0 pl-">
             <nav class="navbar navbar-dark navbar-expand-md">
-                <div class="container"><RouterLink class="navbar-brand rounded-1" to="/home">Dashboard</RouterLink>
+                <div class="container d-flex">
+                  <div class=" navbar-brand">
+                    <img  src="../assets/logo1.png" width="50" class="text-start" alt="logo"/>
+                    <span>Currency</span>
+                  </div>
+                  
+             <RouterLink class="navbar-brand rounded-1" to="/home">Dashboard</RouterLink> 
+                  
                     <div class="collapse navbar-collapse">
                         <form class="form-inline mr-auto" target="_self">
                             <div class="form-group"><input class="form-control search-field" type="search" name="search" id="search-field"></div>
                         </form>
-                        <span class="navbar-text">
+                       <!--  <span class="navbar-text">
                           <RouterLink to="/" class="login">Connexion</RouterLink>
-                        </span>
+                        </span> -->
                         <button class="btn btn-danger" @click="logout">Logout</button>
                         </div>
                 </div>
             </nav>
-            
         </div>
     </div>
    
@@ -23,17 +29,22 @@
 <script>
 import { RouterLink } from 'vue-router';
 import axios from 'axios';
+window.axios = axios;
 export default {
   data (){
     return{
       token: localStorage.getItem('token')
     }
   },
+  mounted(){
+    window.axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`
+  },
   methods:{
     logout(){
               axios.post('http://127.0.0.1:8000/api/logout').then((response) => {
                     localStorage.removeItem('token')
                     this.$router.push('/')
+                    
                 }).catch((errors) => {
                     console.log(errors)
                 })
@@ -130,27 +141,8 @@ export default {
   border-radius:2px;
 }
 
-.header-dark .navbar .dropdown-menu .dropdown-item:focus, .header-dark .navbar .dropdown-menu .dropdown-item {
-  line-height:2;
-  font-size:14px;
-  color:#37434d;
-}
 
-.header-dark .navbar .dropdown-menu .dropdown-item:focus, .header-dark .navbar .dropdown-menu .drodown-item:hover {
-  background:#ebeff1;
-}
 
-.header-dark .navbar .action-button, .header-dark .navbar .action-button:active {
-  background:#208f8f;
-  border-radius:20px;
-  font-size:inherit;
-  color:#fff;
-  box-shadow:none;
-  border:none;
-  text-shadow:none;
-  padding:.5rem .8rem;
-  transition:background-color 0.25s;
-}
 
 .header-dark .navbar .action-button:hover {
   background:#269d9d;

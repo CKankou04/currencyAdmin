@@ -1,10 +1,11 @@
 <template>
-<div class="container-fluid px-1 py-5 mx-auto">
+<h1 class="text-center pt-5 pb-1">Bienvenue sur la page de création d'une nouvelle devise</h1>
+<div class="container-fluid px-1 py-5 mx-auto pt-1">
     <div class="row d-flex justify-content-center">
       <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
         
         <div class="card">
-          <h5 class="text-center mb-4">Formulaire de Création d'une nouvelle dévise</h5>
+          <h5 class="text-center mb-4">Formulaire de Création</h5>
           <form class="form-card" onsubmit="event.preventDefault()">
             <div class="row justify-content-between text-left">
               <div class="form-group col-sm-6 flex-column d-flex">
@@ -35,7 +36,7 @@
               </div>
             </div>
             
-            <div class="row justify-content-between text-left">
+            <div class="row justify-content-between text-left pt-4">
               <div class="form-group col-12 flex-column d-flex">
                 <label class="form-control-label px-3"
                   >Symbole de dévise<span class="text-danger">
@@ -67,6 +68,8 @@
 </template>
 
 <script>
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 import axios from 'axios';
 export default {
   data(){
@@ -82,7 +85,7 @@ export default {
             create() {
             axios.post('http://127.0.0.1:8000/api/currencies', this.formData).then((response) => {
                 console.log('succes')
-                this.$router.push('/')
+                this.$router.push('/home')
                 this.$toaster.success('dévise ajoutée avec succès!')
                 
             }).catch((error) => {
